@@ -2,6 +2,8 @@
 package view;
 
 import controller.AlumnoController;
+import controller.InscripcionController;
+import controller.MateriaController;
 
 
 public class InicioView extends javax.swing.JFrame {
@@ -46,11 +48,21 @@ public class InicioView extends javax.swing.JFrame {
         btnMaterias1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnMaterias1.setForeground(new java.awt.Color(255, 255, 255));
         btnMaterias1.setText("Materias");
+        btnMaterias1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaterias1ActionPerformed(evt);
+            }
+        });
 
         btnInscripciones1.setBackground(new java.awt.Color(0, 102, 0));
         btnInscripciones1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnInscripciones1.setForeground(new java.awt.Color(255, 255, 255));
         btnInscripciones1.setText("Inscripciones");
+        btnInscripciones1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscripciones1ActionPerformed(evt);
+            }
+        });
 
         btnConsultas.setBackground(new java.awt.Color(0, 102, 0));
         btnConsultas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -108,6 +120,22 @@ public class InicioView extends javax.swing.JFrame {
         v.setLocationRelativeTo(v);
         this.dispose();
     }//GEN-LAST:event_btnAlumnosActionPerformed
+
+    private void btnMaterias1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaterias1ActionPerformed
+        MateriaView v = new MateriaView();
+        MateriaController c = new MateriaController(v);
+        v.setVisible(true);
+        v.setLocationRelativeTo(v);
+        this.dispose();
+    }//GEN-LAST:event_btnMaterias1ActionPerformed
+
+    private void btnInscripciones1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscripciones1ActionPerformed
+        InscripcionesView v = new InscripcionesView();
+        InscripcionController c = new InscripcionController(v) {};
+        v.setVisible(true);
+        v.setLocationRelativeTo(v);
+        this.dispose();
+    }//GEN-LAST:event_btnInscripciones1ActionPerformed
 
     public static void main(String args[]) {
         InicioView v = new InicioView();

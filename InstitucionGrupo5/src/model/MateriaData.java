@@ -59,7 +59,7 @@ public class MateriaData {
         }
     }
     
-    public void eliminarAlumno(int id){
+    public void eliminarMateria(int id){
         String instruccion = "DELETE FROM materia WHERE idMateria=?";
         try {
             this.con = conexion.getConexion();

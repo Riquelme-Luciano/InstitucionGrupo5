@@ -123,12 +123,13 @@ public class InscripcionData {
         }
     }
 
-    public void desinscribirAlumno(int idInscripcion) {
-        String instruccion = "DELETE FROM inscripcion WHERE idInscripcion=?";
+    public void desinscribirAlumno(int idMateria, int idAlumno) {
+        String instruccion = "DELETE FROM inscripcion WHERE idMateria=? AND idAlumno=?";
         try {
             this.con = conexion.getConexion();
             PreparedStatement ps = con.prepareStatement(instruccion);
-            ps.setInt(1, idInscripcion);
+            ps.setInt(1, idMateria);
+            ps.setInt(2, idAlumno);
             ps.executeUpdate();
             this.con.close();
         } catch (Exception e) {

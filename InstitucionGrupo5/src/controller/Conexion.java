@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Conexion {
-   private String db = "universidad1";
+   private String db = "universidad2";
    private String url = "jdbc:mysql://127.0.0.1/"+db;
    private String user = "root";
    private String pass = "";

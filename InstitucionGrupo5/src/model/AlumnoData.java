@@ -76,7 +76,7 @@ public class AlumnoData {
             ps.executeUpdate();
             this.con.close();
         } catch (Exception e) {
-            System.out.println("Error al querer eliminar alumno en DAO");
+            System.out.println("Error al querer eliminar alumno en DAO"+e);
         }
     }
 

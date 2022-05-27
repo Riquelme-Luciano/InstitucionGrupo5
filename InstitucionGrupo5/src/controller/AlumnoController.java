@@ -8,9 +8,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -46,15 +43,27 @@ public class AlumnoController implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//      if(e.getSource()==vista.btnListar){
-//          listar(vista.tablaAlumnos);
-//      }
         if (e.getSource() == vista.btnGuardar) {
             insertar();
             listar(vista.tablaAlumnos);
         }
         if (e.getSource() == vista.btnSeleccionar) {
-            int fila = vista.tablaAlumnos.getSelectedRow();
+            seleccionar();
+        }
+        if (e.getSource() == vista.btnEditar) {
+            actualizar();
+            limpiarContenido();
+            listar(vista.tablaAlumnos);
+        }
+        if (e.getSource() == vista.btnEliminar) {
+            delete();
+            listar(vista.tablaAlumnos);
+            limpiarContenido();
+        }
+    }
+    
+    public void seleccionar(){
+        int fila = vista.tablaAlumnos.getSelectedRow();
             if (fila == -1) {
                 JOptionPane.showMessageDialog(vista, "Debe seleccionar una fila");
             } else {
@@ -78,19 +87,8 @@ public class AlumnoController implements ActionListener, KeyListener {
                     System.out.println("Error al parsear el dato de la tabla fecha al textField");
                 }
             }
-        }
-        if (e.getSource() == vista.btnEditar) {
-            actualizar();
-            limpiarContenido();
-            listar(vista.tablaAlumnos);
-        }
-        if (e.getSource() == vista.btnEliminar) {
-            delete();
-            listar(vista.tablaAlumnos);
-            limpiarContenido();
-        }
     }
-
+    
     public void delete() {
         int fila = vista.tablaAlumnos.getSelectedRow();
         if (fila == -1) {
@@ -222,15 +220,15 @@ public class AlumnoController implements ActionListener, KeyListener {
 
     }
 
-    public void limpiarTabla(JTable tabla) {
-        try {
-            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-            int filas = tabla.getRowCount();
-            for (int i = 0; filas > i; i++) {
-                modelo.removeRow(0);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
-        }
-    }
+//    public void limpiarTabla(JTable tabla) {
+//        try {
+//            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+//            int filas = tabla.getRowCount();
+//            for (int i = 0; filas > i; i++) {
+//                modelo.removeRow(0);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+//        }
+//    }
 }
