@@ -33,6 +33,11 @@ public class InicioView extends javax.swing.JFrame {
         btnNotas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnNotas.setForeground(new java.awt.Color(255, 255, 255));
         btnNotas.setText("Notas");
+        btnNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNotasActionPerformed(evt);
+            }
+        });
 
         btnAlumnos.setBackground(new java.awt.Color(0, 102, 0));
         btnAlumnos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -68,6 +73,11 @@ public class InicioView extends javax.swing.JFrame {
         btnConsultas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnConsultas.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultas.setText("Consultas");
+        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,6 +146,20 @@ public class InicioView extends javax.swing.JFrame {
         v.setLocationRelativeTo(v);
         this.dispose();
     }//GEN-LAST:event_btnInscripciones1ActionPerformed
+
+    private void btnNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotasActionPerformed
+        NotasView nv = new NotasView();
+        nv.setVisible(true);
+        nv.setLocationRelativeTo(nv);
+        this.dispose();        
+    }//GEN-LAST:event_btnNotasActionPerformed
+
+    private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
+        ConsultaView cv= new ConsultaView();
+        cv.setVisible(true);
+        cv.setLocationRelativeTo(cv);
+        this.dispose();
+    }//GEN-LAST:event_btnConsultasActionPerformed
 
     public static void main(String args[]) {
         InicioView v = new InicioView();
