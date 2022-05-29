@@ -205,5 +205,44 @@ public class InscripcionData {
 
         return datos;
     }
+    
+    public List inscripcionesDeAlumno(Alumno alumno) {
+        List<Inscripcion> inscripciones = new ArrayList<>();
+        String instruccion = "SELECT inscripcion.idInscripcion, inscripcion.idMateria,inscripcion.idAlumno, inscripcion.nota "
+                + "FROM inscripcion JOIN materia ON inscripcion.idMateria=materia.idMateria "
+                + "WHERE inscripcion.idAlumno=?";
+        try {
+            this.con = conexion.getConexion();
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setInt(1, alumno.getIdAlumno());
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Inscripcion i = new Inscripcion();
+                i.setIdInscripcion(rs.getInt(1));
+                i.setMateria(buscarMateria(rs.getInt(2)));
+                i.setAlumno(buscarAlumno(rs.getInt(3)));
+                i.setNota(rs.getDouble(4));
+                inscripciones.add(i);
+            }
+            this.con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al listar inscripciones de este alumno en inscripcion data " + e);
+        }
+
+        return inscripciones;
+    }
+    
+    public Alumno buscarAlumno(int id) {
+        AlumnoData ad= new AlumnoData(conexion);
+        return ad.buscarAlumno(id);
+    }
+
+    public Materia buscarMateria(int id) {
+        MateriaData md= new MateriaData(conexion);
+        return md.buscarMateria(id);
+    }
+    
 
 }

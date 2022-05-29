@@ -1,6 +1,8 @@
 
 package view;
 
+import model.Alumno;
+
 public class NotasView extends javax.swing.JFrame {
 
     public NotasView() {
@@ -49,15 +51,20 @@ public class NotasView extends javax.swing.JFrame {
 
         jtNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Materia", "Nota"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jtNotas);
 
         jbCancelar.setBackground(new java.awt.Color(255, 51, 51));
@@ -159,7 +166,7 @@ public class NotasView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbGuardar;
-    private javax.swing.JComboBox<String> jcbAlumnos;
-    private javax.swing.JTable jtNotas;
+    public javax.swing.JComboBox<Alumno> jcbAlumnos;
+    public javax.swing.JTable jtNotas;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,33 @@ public class AlumnoData {
         this.conexion = conexion;
     }
 
+    public Alumno buscarAlumno(int id) {
+        Alumno alumno = new Alumno();
+        String sql = "SELECT nombre, apellido, fechaNac FROM alumno WHERE idAlumno=? AND activo = 1";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql); // Tener el string con la sentencia sql
+            ps.setInt(1, id); // seteo al sql el parametro dinamico el id
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                alumno.setIdAlumno(id);
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                //conversion para ingresar date
+                java.util.Date  utilDate = new java.util.Date(rs.getDate("fechaNac").getTime());
+                alumno.setFechaNac(utilDate);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error de conexion con base de datos");
+        }
+
+        return alumno;
+    }
+    
     public int insertarAlumno(Alumno alumno) {
         String instruccion = "INSERT INTO alumno(nombre,apellido,fechaNac,activo) VALUES (?,?,?,?)";
         this.con = conexion.getConexion();

@@ -17,6 +17,29 @@ public class MateriaData {
         this.conexion = conexion;
     }
     
+    public Materia buscarMateria (int id) {
+        Materia materia = new Materia();
+        String sql = "SELECT idMateria,nombre,añoMateria FROM materia WHERE idMateria = ? AND activo = 1";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()){
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setYearMateria(rs.getInt("añoMateria"));
+
+            }
+            ps.close();
+        } catch (SQLException e) {
+              System.out.println("Error de conexion con base de datos");
+        }
+
+        return materia;
+    }
+    
     public int insertarMateria(Materia materia) {
         String instruccion = "INSERT INTO materia(nombre,añoMateria,activo) VALUES (?,?,?)";
         this.con = conexion.getConexion();

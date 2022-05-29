@@ -1,6 +1,8 @@
 
 package view;
 
+import model.Materia;
+
 public class ConsultaView extends javax.swing.JFrame {
 
     public ConsultaView() {
@@ -24,13 +26,10 @@ public class ConsultaView extends javax.swing.JFrame {
 
         jtAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Alumno", "Nota"
             }
         ));
         jScrollPane1.setViewportView(jtAlumnos);
@@ -116,7 +115,7 @@ public class ConsultaView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcbMaterias;
-    private javax.swing.JTable jtAlumnos;
+    public javax.swing.JComboBox<Materia> jcbMaterias;
+    public javax.swing.JTable jtAlumnos;
     // End of variables declaration//GEN-END:variables
 }
