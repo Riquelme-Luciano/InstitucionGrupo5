@@ -2,8 +2,10 @@
 package view;
 
 import controller.AlumnoController;
+import controller.ConsultaController;
 import controller.InscripcionController;
 import controller.MateriaController;
+import controller.NotasController;
 
 
 public class InicioView extends javax.swing.JFrame {
@@ -149,6 +151,7 @@ public class InicioView extends javax.swing.JFrame {
 
     private void btnNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotasActionPerformed
         NotasView nv = new NotasView();
+        NotasController nc = new NotasController(nv);
         nv.setVisible(true);
         nv.setLocationRelativeTo(nv);
         this.dispose();        
@@ -156,6 +159,7 @@ public class InicioView extends javax.swing.JFrame {
 
     private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
         ConsultaView cv= new ConsultaView();
+        ConsultaController cc = new ConsultaController(cv);
         cv.setVisible(true);
         cv.setLocationRelativeTo(cv);
         this.dispose();
